@@ -64,7 +64,6 @@
                 MessageBox.Show("Debe seleccionar la orden a modificar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
 
-
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
@@ -72,9 +71,13 @@
 
     Private Sub ButtonOrdEliminar_Click(sender As Object, e As EventArgs) Handles ButtonOrdEliminar.Click
         Try
-            If MessageBox.Show("Desea eliminar esta Orden?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-                Eliminar("DELETE FROM ORDENES WHERE ID_ORDEN='" & textOrdID.Text & "'")
-                ActualizarGridOrd()
+            If textOrdID.Text <> "" Then
+                If MessageBox.Show("Desea eliminar esta Orden?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                    Eliminar("DELETE FROM ORDENES WHERE ID_ORDEN='" & textOrdID.Text & "'")
+                    ActualizarGridOrd()
+                End If
+            Else
+                MessageBox.Show("Debe seleccionar la orden a eliminar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         Catch ex As Exception
             MessageBox.Show(ex.Message)

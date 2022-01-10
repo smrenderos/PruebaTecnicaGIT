@@ -49,9 +49,13 @@
     End Sub
     Private Sub buttonProdEliminar_Click(sender As Object, e As EventArgs) Handles buttonProdEliminar.Click
         Try
-            If MessageBox.Show("Desea eliminar este Producto?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-                Eliminar("DELETE FROM PRODUCTOS WHERE ID_PRODUCTO='" & textProdID.Text & "'")
-                ActualizarGridProd()
+            If textProdID.Text <> "" Then
+                If MessageBox.Show("Desea eliminar este Producto?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                    Eliminar("DELETE FROM PRODUCTOS WHERE ID_PRODUCTO='" & textProdID.Text & "'")
+                    ActualizarGridProd()
+                End If
+            Else
+                MessageBox.Show("Debe seleccionar el producto a eliminar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         Catch ex As Exception
             MessageBox.Show(ex.Message)
