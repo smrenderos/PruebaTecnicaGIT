@@ -10,7 +10,7 @@
 <blockquote>
 <p><strong>Nota:</strong> La solución utiliza el string de conexión:<br>
 OracleConnection(“User ID=system;Password=123456;Data Source=localhost:1521/XE;”)<br>
-Se puede editar modificando el modulo Conexion.vb</p>
+Se puede editar modificando el modulo Conexion.vb ubicado en el directorio PruebaTecnicaGIT</p>
 </blockquote>
 <h2 id="instalar-paquete-oracle.manageddataaccess">Instalar paquete Oracle.ManagedDataAccess</h2>
 <p>En el IDE de Visual Studio instalar paquete Oracle.ManagedDataAccess a través del administrador de paquetes NuGet.</p>
