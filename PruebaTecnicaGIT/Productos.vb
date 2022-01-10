@@ -36,9 +36,11 @@
     End Sub
     Private Sub buttonProdModificar_Click(sender As Object, e As EventArgs) Handles buttonProdModificar.Click
         Try
-            If textProdID.Text <> "0" And textProdID.Text <> "" Then
+            If textProdID.Text <> "" Then
                 Actualizar("UPDATE PRODUCTOS SET NOMBRE_PRODUCTO='" & textProdNombre.Text & "',CANTIDAD_PORCIONES='" & textProdcantidad.Text & "',DESCRIPCION='" & textProdDescripcion.Text & "',PRECIO='" & textProdPrecio.Text & "',TAMAÑO='" & textProdTamaño.Text & "' WHERE ID_PRODUCTO='" & textProdID.Text & "'")
                 ActualizarGridProd()
+            Else
+                MessageBox.Show("Debe seleccionar el producto a modificar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
 
         Catch ex As Exception

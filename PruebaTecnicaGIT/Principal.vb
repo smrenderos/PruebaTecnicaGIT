@@ -28,7 +28,7 @@
     End Sub
     Private Sub ActualizarGridOrd()
         Try
-            Consultar("SELECT A.ID_ORDEN AS ""No de orden"",A.NOMBRE_CLIENTE AS ""Solicitante"",A.ID_PRODUCTO AS ""CodigoP"",NVL(B.NOMBRE_PRODUCTO,'No existe en catálogo') AS ""NombreP"",A.CANTIDAD AS ""Cantidad"",A.FECHA_PEDIDO AS ""FechaPedido"",A.DIRECCION AS ""Direccion"",A.COMENTARIOS AS ""Comentarios"",A.ESTADO AS ""Estado"",B.PRECIO AS ""Precio unitario"",(A.CANTIDAD*B.PRECIO) AS ""Total"",A.USUARIO AS ""Usuario"" FROM ORDENES A LEFT JOIN PRODUCTOS B ON B.ID_PRODUCTO = A.ID_PRODUCTO ORDER BY A.ID_ORDEN DESC", DataGridViewOrd)
+            Consultar("SELECT A.ID_ORDEN AS ""No de orden"",A.NOMBRE_CLIENTE AS ""Solicitante"",A.ID_PRODUCTO AS ""CodigoP"",NVL(B.NOMBRE_PRODUCTO,'No existe en catálogo') AS ""NombreP"",A.CANTIDAD AS ""Cantidad"",A.FECHA_PEDIDO AS ""FechaPedido"",A.DIRECCION AS ""Direccion"",A.COMENTARIOS AS ""Comentarios"",A.ESTADO AS ""Estado"",B.PRECIO AS ""Precio unitario"",(A.CANTIDAD*B.PRECIO) AS ""Total"",A.USUARIO AS ""Usuario"" FROM ORDENES A LEFT JOIN PRODUCTOS B ON B.ID_PRODUCTO = A.ID_PRODUCTO WHERE A.ESTADO = 'Pendiente' ORDER BY A.ID_ORDEN DESC", DataGridViewOrd)
             Consultar("SELECT ID_PRODUCTO FROM PRODUCTOS", textOrdProducto)
             textOrdProducto.DisplayMember = "ID_PRODUCTO"
         Catch ex As Exception
@@ -57,10 +57,13 @@
 
     Private Sub ButtonOrdModificar_Click(sender As Object, e As EventArgs) Handles ButtonOrdModificar.Click
         Try
-            If textOrdID.Text <> "0" And textOrdID.Text <> "" Then
+            If textOrdID.Text <> "" Then
                 Actualizar("UPDATE ORDENES SET NOMBRE_CLIENTE='" & textOrdCliente.Text & "',ID_PRODUCTO='" & textOrdProducto.Text & "',CANTIDAD='" & textOrdCantidad.Text & "',FECHA_PEDIDO='" & DateTimePicker.Value.Date & "',DIRECCION='" & textOrdDireccion.Text & "',COMENTARIOS='" & textOrdComentarios.Text & "',ESTADO='" & textOrdEstado.Text & "' WHERE ID_ORDEN='" & textOrdID.Text & "'")
                 ActualizarGridOrd()
+            Else
+                MessageBox.Show("Debe seleccionar la orden a modificar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
+
 
         Catch ex As Exception
             MessageBox.Show(ex.Message)
