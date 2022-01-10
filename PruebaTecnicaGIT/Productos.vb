@@ -1,6 +1,13 @@
 ﻿Public Class Productos
     Private Sub Productos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ActualizarGridProd()
+
+        If perfilUsuario <> "Administrador" Then
+            buttonProdNuevo.Enabled = False
+            buttonProdAgregar.Enabled = False
+            buttonProdModificar.Enabled = False
+            buttonProdEliminar.Enabled = False
+        End If
     End Sub
     Private Sub ActualizarGridProd()
         Try
