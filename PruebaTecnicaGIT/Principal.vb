@@ -21,6 +21,10 @@
         DataGridViewOrd.Columns(7).Visible = False
         DataGridViewOrd.Columns(8).Visible = False
 
+        If perfilUsuario <> "Administrador" Then
+            DataGridViewOrd.Columns(11).Visible = False
+        End If
+
     End Sub
     Private Sub ActualizarGridOrd()
         Try
