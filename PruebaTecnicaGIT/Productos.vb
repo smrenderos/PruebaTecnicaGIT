@@ -13,6 +13,7 @@
         Try
             Consultar("SELECT ID_PRODUCTO AS ID, NOMBRE_PRODUCTO AS ""Nombre"", CANTIDAD_PORCIONES AS ""Porciones"", DESCRIPCION AS ""Descripción"", PRECIO AS ""Precio"", TAMAÑO AS ""Tamaño"" FROM PRODUCTOS ORDER BY ID_PRODUCTO DESC", DataGridViewProd)
             Consultar("SELECT ID_PRODUCTO FROM PRODUCTOS", Principal.textOrdProducto)
+            Consultar("SELECT A.ID_ORDEN AS ""No de orden"",A.NOMBRE_CLIENTE AS ""Solicitante"",A.ID_PRODUCTO AS ""CodigoP"",NVL(B.NOMBRE_PRODUCTO,'No existe en catálogo') AS ""NombreP"",A.CANTIDAD AS ""Cantidad"",A.FECHA_PEDIDO AS ""FechaPedido"",A.DIRECCION AS ""Direccion"",A.COMENTARIOS AS ""Comentarios"",A.ESTADO AS ""Estado"",B.PRECIO AS ""Precio unitario"",(A.CANTIDAD*B.PRECIO) AS ""Total"",A.USUARIO AS ""Usuario"" FROM ORDENES A LEFT JOIN PRODUCTOS B ON B.ID_PRODUCTO = A.ID_PRODUCTO WHERE A.ESTADO = 'Pendiente' ORDER BY A.ID_ORDEN DESC", Principal.DataGridViewOrd)
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
