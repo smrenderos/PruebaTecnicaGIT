@@ -3,6 +3,7 @@
 <p>Prueba técnica desarrollada utilizando las siguientes herramientas:</p>
 <ul>
 <li>IDE: Visual Studio 2022.</li>
+<li>Lenguaje: Visual Basic .NET Framework.</li>
 <li>Base de Datos: Oracle Database 21c Express Edition.</li>
 </ul>
 <h2 id="database-dump">Database dump</h2>
